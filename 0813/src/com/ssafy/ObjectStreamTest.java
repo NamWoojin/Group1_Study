@@ -11,9 +11,9 @@ public class ObjectStreamTest {
 	
 	public static void main(String[] args) {
 		File target = new File("c:" + File.separator + "SSAFY" + File.separator + "objPerson.dat");
-		Person person = new Person("홍길동", 20, "111111-2222222", "hong", "1234");
+		//Person person = new Person("홍길동", 20, "111111-2222222", "hong", "1234");
 		try {
-//			//객체 저장
+			//객체 저장
 //			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(target));
 //			oos.writeObject(person);
 //			oos.close();

@@ -6,40 +6,49 @@ public class 회문2 {
 		
 		for(int tc=1; tc<=10; tc++) {
 			int N = sc.nextInt();
-			char map[][] = new char[8][8]; 
-			for(int i=0; i<8; i++) {
+			char map[][] = new char[100][100]; 
+			for(int i=0; i<100; i++) {
 				char str[] = sc.next().toCharArray();
-				for(int j=0; j<8; j++) {
+				for(int j=0; j<100; j++) {
 					map[i][j] = str[j];
 				}
 			}
-			int cnt=0;
-			for(int i=0; i<8; i++) {
-				for(int j=0; j<8; j++) {
+			int max = 0;
+			for(int i=0; i<100; i++) {
+				for(int j=0; j<100; j++) {
+					int cnt=1;
 					//본인부터 오른쪽
-					if(j<8-N+1) {
-						boolean b = true;
-						for(int k=0; k<N; k++) {
-							if(map[i][j+k] != map[i][j+N-k-1] ) {
-								b = false;
-							}
-						}
-						if(b)
+					boolean b = true;
+					for(int k=2; k<100; k++) {
+						if(map[i][j] == map[i][k]) {
 							cnt++;
-					}
-					if(i<8-N+1) {
-						boolean b = true;
-						for(int k=0; k<N; k++) {
-							if(map[i+k][j] != map[i+N-k-1][j] ) {
-								b = false;
-							}
 						}
-						if(b)
-							cnt++;
+						else {
+							b = false;
+							break;
+						}
 					}
+					max = Math.max(max, cnt);
+					if(b)
+						cnt++;
+					
+					b = true;
+					for(int k=2; k<100; k++) {
+						if(map[j][i] == map[k][i]) {
+							cnt++;
+						}
+						else {
+							b = false;
+							break;
+						}
+					}
+					max = Math.max(max, cnt);
+					if(b)
+						cnt++;
+					
 				}
-			}	
-			System.out.println("#"+tc+" "+cnt);
+			}
+			System.out.println("#"+tc+" "+max);
 		}
 	}
 }
